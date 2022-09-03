@@ -1,0 +1,9 @@
+FEITO NAS RESOLUÇÕES
+
+1360x768 (DESKTOP)
+414x896 (MOBILE)
+
+é importante atentar-se às resoluções nativas, pois foi um projeto apenas para exercício, sem a necessidade
+de portar para todas as resoluções existentes.
+
+atenciosamente.

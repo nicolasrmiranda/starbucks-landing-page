@@ -1,0 +1,340 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+
+@mixin flex($justify_content, $align_items, $flex_direction) {
+    display: flex;
+    justify-content: $justify_content;
+    align-items: $align_items;
+    flex-direction: $flex_direction;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    color: #323133;
+
+    a {
+        text-decoration: none;
+    }
+
+    body {
+        height: 100vh;
+        width: 100vw;
+        @include flex(space-between, center, column);
+        //header
+        #header {
+            width: 100vw;
+            height: 90px;
+            padding: 0 5vw;
+            background: #fff;
+            @include flex(space-between, center, row);
+                //ul
+            .menu {
+                @include flex(center, center, row);
+                gap: 2rem;
+                font-weight: 500;
+
+                a {
+                    display: block;
+                    padding: .5rem;
+                }
+
+                li {
+                    position: relative;
+                    @include flex(center, flex-start, column);
+
+                    .bar {
+                        content: '';
+                        position: absolute;
+                        border: 1px solid #323133;
+                        margin: 30px 0px 5px 8px;
+                        width: 0px;
+                        visibility: hidden;
+                        height: 2px;
+                        transition: .3s;
+                    }
+
+                    &:hover {
+                        .bar {
+                            visibility: visible;
+                            width: 50%;
+                        }
+                    }
+                }
+            }
+            
+            .logo {
+                width: 60px;
+                height: 100%;
+                background: url(../../src/img/icons/logo.png) no-repeat center;
+                background-size: contain;
+            }
+
+            .btn-mobile {
+                display: none;
+            }
+        }
+        main {
+            height: 100vh;
+            width: 100vw;
+            padding: 0vw 5vw;
+            @include flex(space-between, center, row);
+            .main-text {
+                width: 45vw;
+                height: 70vh;
+                @include flex(center, flex-start, column);
+                h1 {
+                    font-size: 3.5rem;
+                    font-weight: 500;
+                    line-height: 60px;
+                    
+                    .starbucks {
+                        color: #026E44;
+                        font-size: 4.0rem;
+                        font-weight: 900;
+                    }
+                }
+                p {
+                    font-size: 0.85rem;
+                    font-weight: 500;
+                    padding: 0px 40px 0px 0px;
+                    color: #323133c9;
+                    margin: 10px 0px 25px 0px;
+                }
+                .btn {
+                    padding: 8px 20px;
+                    background-color: #026E44;
+                    border-radius: 20px;
+                    font-size: 0.8rem;
+                    font-weight: 500;
+                    color: #fff;
+                    transition: .2s;
+
+                    &:hover {
+                        padding: 8px 22px;
+                        filter: brightness(110%);
+                    }
+                }
+            }
+            aside {
+                content: '';
+                width: 50vw;
+                height: 100vh;
+                @include flex(center, center, row);
+
+                .social-media {
+                    position: absolute;
+                    right: 20px;
+                    @include flex(center, center, column);
+
+                    .icon {
+                        margin: 10px 0px;
+
+                        ion-icon {
+                            font-size: 20pt;
+                            color: #fff;
+                        }
+
+                        img {
+                            width: 25px;
+                        }
+
+                        &:hover {
+                            filter: drop-shadow(2px 2px 2px #323133);
+                        }
+                    }
+                }
+
+                .img {
+                    width: 100vw;
+                    height: 100%;
+
+                    &.coffee-one {
+                        background: url(../../src/img/img1.png) no-repeat center;
+                        background-size: 270px;
+                    }
+
+                    &.coffee-two {
+                        background: url(../../src/img/img2.png) no-repeat center;
+                        background-size: 270px;
+                    }
+
+                    &.coffee-three {
+                        background: url(../../src/img/img3.png) no-repeat center;
+                        background-size: 300px;
+                        margin: 0px 10px 20px 0px;
+                    }
+                }
+
+                .bg {
+                    position: absolute;
+                    top: 0%;
+                    left: 0%;
+                    width: 100%;
+                    background-color: #026E44;
+                    height: 100%;
+                    clip-path: circle(600px at right 750px);
+                    z-index: -2;
+
+                    &.coffee-one {
+                        background-color: #026E44;
+                    }
+
+                    &.coffee-two {
+                        background-color: #026E44;
+                    }
+
+                    &.coffee-three {
+                        background-color: #026E44;
+                    }
+                }
+            }
+        }   
+        .coffee-selec {
+            position: absolute;
+            width: 100vw;
+            height: 20vh;
+            bottom: 0;
+            @include flex(center, center, row);
+
+            .coffee-img {
+                cursor: pointer;
+                margin: 0px 15px;
+                transition: .6s;
+
+                img {
+                    width: 50px;
+                }
+
+                &:hover {
+                    margin-bottom: 20px;
+                }
+            }
+        }    
+    }
+
+    //responsive 
+    @media (max-width: 1000px) and (min-width: 300px) {
+        body {
+            #header {
+                .nav {
+                    .btn-mobile {
+                        @include flex(center, center, row);
+                        padding: .5rem 1rem;
+                        font-size: 1rem;
+                        border: none;
+                        cursor: pointer;
+                        gap: .5rem;
+                        background: transparent;
+                        ;
+                        .hamb {
+                            width: 20px;
+                            height: 20px;
+                            border-top: 2px solid #323133;
+                            
+                            &::after, &::before {
+                                content: '';
+                                display: block;
+                                width: 20px;
+                                height: 2px;
+                                background: #323133;
+                                margin-top: 5px;
+                                transition: .5s;
+                                position: relative;
+                            }
+                        }
+                    }
+
+                    .menu {
+                        @include flex(center, center, column);
+                        background: #fff;
+                        position: absolute;
+                        width: 100%;
+                        height: 0px;
+                        top: 70px;
+                        right: 0;
+                        z-index: 1001;
+                        transition: .6s;
+                        visibility: hidden;
+                    }
+
+                    &.active {
+                        .menu {
+                            @include flex(center, center, column);
+                            visibility: visible;
+                            height: calc(100vh - 70px);
+                        }
+
+                        .hamb {
+                            border-top-color: transparent;
+
+                            &::before {
+                            transform: rotate(135deg); 
+                            }
+
+                            &::after {
+                                transform: rotate(-135deg); 
+                                top: -7px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            main {
+                @include flex(center, center, column);
+
+                .social-media {
+                    margin-bottom: 200px;
+                }
+
+                .main-text {
+                    width: 80vw;
+                    h1 {
+                        font-size: 1.8rem;
+                        line-height: 40px;
+                        .starbucks {
+                            font-size: 2.0rem;
+                        }
+                    }
+
+                    p {
+                        font-size: 0.8rem;
+                        padding: 0px 0px 0px 0px;
+                        margin: 10px 0px 25px 0px;
+                    }
+                }
+
+                aside {
+                    width: 80vw;
+                    .img {
+                        width: 100%;
+
+                        &.coffee-one {
+                            background: url(../../src/img/img1.png) no-repeat center;
+                            background-size: 270px;
+                            margin: 0px 10px 80px 0px;
+                        }
+    
+                        &.coffee-two {
+                            background: url(../../src/img/img2.png) no-repeat center;
+                            background-size: 270px;
+                            margin: 0px 10px 80px 0px;
+                        }
+    
+                        &.coffee-three {
+                            background: url(../../src/img/img3.png) no-repeat center;
+                            background-size: 300px;
+                            margin: 0px 10px 150px 0px;
+                        }
+                    }
+                    .bg {
+                        clip-path: circle(500px at right 900px);  
+                    } 
+                }
+            }
+        }
+    }
+}
